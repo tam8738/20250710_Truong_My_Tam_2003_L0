@@ -1,4 +1,5 @@
 package Static;
+import model.Rank;
 import model.Student;
 import model.StaticArray;
 
@@ -19,6 +20,7 @@ public class AddStudent {
         String school = null;
         int year = 0;
         Double gpa = null;
+        Rank rank = null;
         try {
             id = StaticArray.studentCount + 1;
             name = DataEntry.inputName(sc);
@@ -30,6 +32,7 @@ public class AddStudent {
             school = DataEntry.inputSchool(sc);
             year = DataEntry.inputYear(sc);
             gpa = DataEntry.inputGpa(sc);
+
         } catch (Exception e) {
             System.out.println("Lỗi không mong muốn: " + e.getMessage());
         } // Không đóng sc để tránh lỗi nhập tiếp

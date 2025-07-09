@@ -1,4 +1,5 @@
 import Static.*;
+import model.StaticArray;
 
 import java.util.Scanner;
 
@@ -47,11 +48,12 @@ public class Main {
                     }
                     break;
                 case 5:
-                    View.viewAll();
+                    View.menu();
                     break;
             }
         }while(choice != 0);
-
+        StaticArray.saveToFile();
+        System.out.println("lưu file thành công");
     }
     private static void showMenu() {
         System.out.println("1. Thêm sinh viên");

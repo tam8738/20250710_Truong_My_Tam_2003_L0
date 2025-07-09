@@ -7,6 +7,7 @@ public class Student extends Person {
    private String school;
    private int year;
    private Double gpa;
+   private Rank rank;
 
     public Student(int id, String name, LocalDate dateOfBirth, String address, Double height, Double weight, String studentCode, String school, int year, Double gpa) {
         super(id, name, dateOfBirth, address, height, weight);
@@ -14,6 +15,7 @@ public class Student extends Person {
         this.school = school;
         this.year = year;
         this.gpa = gpa;
+        this.rank = Rank.calculateRank(gpa);
     }
 
     public String getStudentCode() {
@@ -46,15 +48,24 @@ public class Student extends Person {
 
     public void setGpa(Double gpa) {
         this.gpa = gpa;
+        this.rank = Rank.calculateRank(gpa);
     }
-    
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
+
     @Override
     public String toString() {
         return "Student{" + super.toString() + "\n" +
                 "MSV : " + studentCode +
                 ", trường : " + school +
                 ", năm nhập học : " + year +
-                ", gpa : " + (gpa != null && gpa != 0.0 ? gpa : "Không có") +
+                ", gpa : " + (gpa != null && gpa != 0.0 ? gpa : "Không có") + ", học lực: " + rank.toVietnamese() +
                 '}';
     }
 }

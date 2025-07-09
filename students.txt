@@ -1,0 +1,2 @@
+Student{id : 1, tên : a, sinh nhật : 18/07/2003, địa chỉ : b, chiều cao : 155.0 cm, cân nặng : 45.0 kg
+MSV : 1234567890, trường : x, năm nhập học : 2021, gpa : 8.0, học lực: Giỏi}
