@@ -1,6 +1,5 @@
 import Static.*;
 import model.StaticArray;
-
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +12,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     while (true) {
-                        AddStudent.add();
+                        CRUD.addStudent();
                         System.out.println("Bạn có muốn tiếp tục thêm sinh viên không? (1: Tiếp tục, 0: Quay lại menu)");
                         int again = readInt(sc);
                         if (again != 1) break;
@@ -21,9 +20,9 @@ public class Main {
                     break;
                 case 2:
                     while (true) {
-                        System.out.println("nhập mã sinh viên cần xóa: ");
-                        String s = DataEntry.inputStudentCode2(sc);
-                        DeleteStudent.delete(s);
+                        System.out.println("nhập id sinh viên cần xóa: ");
+                        int id = readInt(sc);
+                        CRUD.deleteStudent(id);
                         System.out.println("Bạn có muốn tiếp tục xóa sinh viên không? (1: Tiếp tục, 0: Quay lại menu)");
                         int again = readInt(sc);
                         if (again != 1) break;
@@ -31,24 +30,28 @@ public class Main {
                     break;
                 case 3:
                     while (true) {
-                        System.out.println("Nhập mã sinh viên cần sửa: ");
-                        String s = DataEntry.inputStudentCode2(sc);
-                        boolean again = UpdateStudent.update(s);
+                        System.out.println("Nhập id sinh viên cần sửa: ");
+                        int id = readInt(sc);
+                        boolean again = CRUD.updateStudent(id);
                         if (!again) break;
                     }
                     break;
                 case 4:
-                    while (true) {
-                        System.out.println("Nhập mã sinh viên cần tìm: ");
-                        String s = DataEntry.inputStudentCode2(sc);
-                        View.viewStudentCode(s);
-                        System.out.println("Bạn muốn tiếp tục tìm sinh viên không? (1: Tiếp tục, 0: quay lại menu)");
-                        int again = readInt(sc);
-                        if (again != 1) break;
-                    }
+                    CRUD.viewAll();
                     break;
                 case 5:
-                    View.menu();
+                    System.out.println("Nhập id sinh viên cần tìm: ");
+                    int id = readInt(sc);
+                    CRUD.viewByCode(id);
+                    break;
+                case 6:
+                    CRUD.viewByRank();
+                    break;
+                case 7:
+                    CRUD.viewRankPercent();
+                    break;
+                case 8:
+                    CRUD.viewGpaPercent();
                     break;
             }
         }while(choice != 0);
@@ -59,8 +62,11 @@ public class Main {
         System.out.println("1. Thêm sinh viên");
         System.out.println("2. Xóa sinh viên");
         System.out.println("3. Sửa thông tin sinh viên");
-        System.out.println("4. Tìm kiếm sinh viên");
-        System.out.println("5. Xem danh sách sinh viên");
+        System.out.println("4. Xem danh sách sinh viên");
+        System.out.println("5. Tìm kiếm sinh viên theo id");
+        System.out.println("6. Xem danh sách sinh viên theo học lực");
+        System.out.println("7. Xem % học lực sinh viên");
+        System.out.println("8. Xem % điểm số sinh viên");
         System.out.println("0. Thoát");
     }
 
@@ -76,5 +82,4 @@ public class Main {
             sc.nextLine(); 
         }
     }
-
 }

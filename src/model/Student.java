@@ -9,8 +9,8 @@ public class Student extends Person {
    private Double gpa;
    private Rank rank;
 
-    public Student(int id, String name, LocalDate dateOfBirth, String address, Double height, Double weight, String studentCode, String school, int year, Double gpa) {
-        super(id, name, dateOfBirth, address, height, weight);
+    public Student(String name, LocalDate dateOfBirth, String address, double height, double weight, String studentCode, String school, int year, Double gpa) {
+        super(name, dateOfBirth, address, height, weight);
         this.studentCode = studentCode;
         this.school = school;
         this.year = year;
@@ -65,7 +65,7 @@ public class Student extends Person {
                 "MSV : " + studentCode +
                 ", trường : " + school +
                 ", năm nhập học : " + year +
-                ", gpa : " + (gpa != null && gpa != 0.0 ? gpa : "Không có") + ", học lực: " + rank.toVietnamese() +
+                ", gpa : " + (gpa != null && gpa != 0.0 ? gpa : "Không có") + ", học lực: " + rank.getVietnamese() +
                 '}';
     }
 }

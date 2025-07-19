@@ -4,14 +4,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Person {
+    static int tmpId = 1;
    private int id;
    private String name;
    private LocalDate dateOfBirth;
    private String address;
-   private Double height;
-   private Double weight;
-    public Person(int id, String name, LocalDate dateOfBirth, String address, Double height, Double weight) {
-        this.id = id;
+   private double height;
+   private double weight;
+    public Person(String name, LocalDate dateOfBirth, String address, double height, double weight) {
+        this.id = tmpId++;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
@@ -51,19 +52,19 @@ public class Person {
         this.address = address;
     }
 
-    public Double getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(Double height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public Double getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -76,8 +77,8 @@ public class Person {
                 ", tên : " + name +
                 ", sinh nhật : " + formattedBirthday +
                 ", địa chỉ : " + (address != null && !address.isEmpty() ? address : "Không có") +
-                ", chiều cao : " + (height != null && height != 0.0 ? height + " cm" : "Không có")+
-                ", cân nặng : " + (weight != null && weight != 0.0 ? weight + " kg" : "Không có")
+                ", chiều cao : " + (height != 0.0 ? height + " cm" : "Không có")+
+                ", cân nặng : " + (weight != 0.0 ? weight + " kg" : "Không có")
                 ;
     }
 }

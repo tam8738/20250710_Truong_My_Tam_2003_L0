@@ -47,9 +47,11 @@ public class DataEntry {
     //điạ chỉ
     public static String inputAddress(Scanner sc) {
         while (true) {
-            System.out.print("Nhập địa chỉ (không bắt buộc): ");
+            System.out.print("Nhập địa chỉ: ");
             try {
                 String address = sc.nextLine();
+                if (address == null || address.trim().isEmpty())
+                    throw new IllegalArgumentException("Địa chỉ không được bỏ trống.");
                 if (address.length() >= Constant.ADRESS_LENGTH) throw new IllegalArgumentException("địa chỉ không quá 300 ký tự.");
                 return address;
             } catch (Exception e) {
@@ -58,13 +60,13 @@ public class DataEntry {
         }
     }
     //chiều cao
-    public static Double inputHeight(Scanner sc) {
+    public static double inputHeight(Scanner sc) {
         while (true) {
-            System.out.print("(không bắt buộc) Nhâp chiều cao cm: ");
+            System.out.print("Nhập chiều cao cm: ");
             try {
                 String height_1 = sc.nextLine().replace(",", ".");
-                if (height_1.trim().isEmpty()) {
-                    return 0.0;
+                if (height_1 == null || height_1.trim().isEmpty()) {
+                    throw new IllegalArgumentException("Chiều cao không được bỏ trống.");
                 }
                 double height = Double.parseDouble(height_1);
                 if (height < Constant.MIN_HEIGHT || height > Constant.MAX_HEIGHT) {
@@ -79,12 +81,13 @@ public class DataEntry {
         }
     }
     //cân nặng
-    public static Double inputWeight(Scanner sc) {
+    public static double inputWeight(Scanner sc) {
         while (true) {
-            System.out.print("(không bắt buộc) Nhập cân nặng (kg, 5.0 - 1000.0, vd: 65.0): ");
+            System.out.print("Nhập cân nặng (kg, 5.0 - 1000.0, vd: 65.0): ");
             try {
                 String weightInput = sc.nextLine().replace(",", ".");
-                if(weightInput.trim().isEmpty()) return 0.0;
+                if(weightInput == null || weightInput.trim().isEmpty())
+                    throw new IllegalArgumentException("Cân nặng không được bỏ trống.");
                 double weight = Double.parseDouble(weightInput);
                 if (weight < Constant.MIN_WEIGHT || weight > Constant.MAX_WEIGHT) {
                     throw new IllegalArgumentException("Cân nặng phải từ 5.0 đến 1000.0 kg!");
@@ -99,17 +102,21 @@ public class DataEntry {
     }
     //MSV
     private static Set<String> studentCodes = new HashSet<>();
-    public static String inputStudentCode(Scanner sc) {
+    public static String inputStudentCode(Scanner sc, String oldCode) {
         while (true) {
             System.out.print("Nhập mã SV (10 ký tự, không trùng): ");
             try {
                 String studentCode = sc.nextLine();
                 if(studentCode == null ) throw new IllegalArgumentException("không được trống msv.");
-                if ( studentCode.length() != Constant.STUDENT_CODE_LENGTH) {
+                if (studentCode.length() != Constant.STUDENT_CODE_LENGTH) {
                     throw new IllegalArgumentException("Mã sinh viên phải có đúng 10 ký tự!");
                 }
-                if (!studentCodes.add(studentCode)) {
+                if (!studentCode.equals(oldCode) && !studentCodes.add(studentCode)) {
                     throw new IllegalArgumentException("Mã sinh viên đã tồn tại!");
+                }
+                // Nếu đổi mã, xóa mã cũ khỏi set
+                if (!studentCode.equals(oldCode)) {
+                    studentCodes.remove(oldCode);
                 }
                 return studentCode;
             } catch (IllegalArgumentException e) {
