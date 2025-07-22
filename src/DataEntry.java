@@ -1,5 +1,3 @@
-package Static;
-
 import model.Constant;
 
 import java.time.LocalDate;
@@ -117,21 +115,6 @@ public class DataEntry {
                 // Nếu đổi mã, xóa mã cũ khỏi set
                 if (!studentCode.equals(oldCode)) {
                     studentCodes.remove(oldCode);
-                }
-                return studentCode;
-            } catch (IllegalArgumentException e) {
-                System.out.println("Lỗi: " + e.getMessage());
-            }
-        }
-    }
-    public static String inputStudentCode2(Scanner sc) {
-        while (true) {
-            System.out.print("Nhập mã SV: ");
-            try {
-                String studentCode = sc.nextLine();
-                if(studentCode == null ) throw new IllegalArgumentException("không được trống msv.");
-                if ( studentCode.length() != Constant.STUDENT_CODE_LENGTH) {
-                    throw new IllegalArgumentException("Mã sinh viên phải có đúng 10 ký tự!");
                 }
                 return studentCode;
             } catch (IllegalArgumentException e) {

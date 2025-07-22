@@ -1,0 +1,2 @@
+Student{id : 1, tên : Tâm, sinh nhật : 18/07/2003, địa chỉ : jhgfd, chiều cao : 155.0 cm, cân nặng : 46.0 kg
+MSV : 0123456789, trường : ac, năm nhập học : 2021, gpa : 7.0, học lực: kha}

@@ -1,4 +1,3 @@
-import Static.*;
 import model.StaticArray;
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     while (true) {
-                        CRUD.addStudent();
+                        CRUD_Static.addStudent();
                         System.out.println("Bạn có muốn tiếp tục thêm sinh viên không? (1: Tiếp tục, 0: Quay lại menu)");
                         int again = readInt(sc);
                         if (again != 1) break;
@@ -22,7 +21,7 @@ public class Main {
                     while (true) {
                         System.out.println("nhập id sinh viên cần xóa: ");
                         int id = readInt(sc);
-                        CRUD.deleteStudent(id);
+                        CRUD_Static.deleteStudent(id);
                         System.out.println("Bạn có muốn tiếp tục xóa sinh viên không? (1: Tiếp tục, 0: Quay lại menu)");
                         int again = readInt(sc);
                         if (again != 1) break;
@@ -32,26 +31,26 @@ public class Main {
                     while (true) {
                         System.out.println("Nhập id sinh viên cần sửa: ");
                         int id = readInt(sc);
-                        boolean again = CRUD.updateStudent(id);
+                        boolean again = CRUD_Static.updateStudent(id);
                         if (!again) break;
                     }
                     break;
                 case 4:
-                    CRUD.viewAll();
+                    CRUD_Static.viewAll();
                     break;
                 case 5:
                     System.out.println("Nhập id sinh viên cần tìm: ");
                     int id = readInt(sc);
-                    CRUD.viewByCode(id);
+                    CRUD_Static.viewByCode(id);
                     break;
                 case 6:
-                    CRUD.viewByRank();
+                    CRUD_Static.viewByRank();
                     break;
                 case 7:
-                    CRUD.viewRankPercent();
+                    CRUD_Static.viewRankPercent();
                     break;
                 case 8:
-                    CRUD.viewGpaPercent();
+                    CRUD_Static.viewGpaPercent();
                     break;
             }
         }while(choice != 0);

@@ -1,12 +1,10 @@
-package Static;
-
+import model.Rank;
 import model.StaticArray;
 import model.Student;
-import model.Rank;
-import java.util.*;
 import java.time.LocalDate;
+import java.util.*;
 
-public class CRUD {
+public class CRUD_Static {
     public static void addStudent() {
         Scanner sc = new Scanner(System.in);
         LocalDate birthday = null;
@@ -20,7 +18,6 @@ public class CRUD {
         int year = 0;
         Double gpa = null;
         try {
-            id = StaticArray.studentCount + 1;
             name = DataEntry.inputName(sc);
             birthday = DataEntry.inputBirthday(sc);
             address = DataEntry.inputAddress(sc);
@@ -41,9 +38,18 @@ public class CRUD {
         System.out.println();
     }
 
+        public static int search(int id) {
+            for (int i = 0; i < StaticArray.studentCount; i++) {
+                if (StaticArray.students[i] != null && StaticArray.students[i].getId() == id) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
     public static boolean updateStudent(int s) {
         Scanner sc = new Scanner(System.in);
-        int i = SearchStudent.search(s);
+        int i = search(s);
         if (i == -1) {
             System.out.println("mã sinh viên không tồn tại");
             return false;
@@ -107,7 +113,7 @@ public class CRUD {
     }
 
     public static void deleteStudent(int x) {
-        int index = SearchStudent.search(x);
+        int index = search(x);
         if(index != -1){
             for(int i = index; i < StaticArray.studentCount - 1; i++){
                 StaticArray.students[i] = StaticArray.students[i+1];
@@ -131,7 +137,7 @@ public class CRUD {
     }
 
     public static void viewByCode(int id) {
-        int idx = SearchStudent.search(id);
+        int idx = search(id);
         if(idx != -1) {
             System.out.println(StaticArray.students[idx]);
         } else {

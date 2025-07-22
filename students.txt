@@ -1,2 +1,2 @@
-Student{id : 1, tên : a, sinh nhật : 18/07/2003, địa chỉ : bv, chiều cao : 155.0 cm, cân nặng : 47.0 kg
-MSV : B21DVCN143, trường : ptit, năm nhập học : 2005, gpa : 9.0, học lực: xuat xac}
+Student{id : 1, tên : Trương Mỹ Tâm, sinh nhật : 18/07/2003, địa chỉ : Ba Vì, chiều cao : 155.0 cm, cân nặng : 47.0 kg
+MSV : B21DVCn143, trường : PTIT, năm nhập học : 2021, gpa : 5.0, học lực: trung binh}
