@@ -24,15 +24,18 @@ public class DataEntry {
         }
     }
     //sinh nhật
-    public static LocalDate inputBirthday(Scanner sc) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static LocalDate inputBirthday(Scanner sc) {DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         while (true) {
             System.out.print("Nhập ngày sinh (dd/mm/yyyy): ");
             try {
                 String dateStr = sc.nextLine();
                 if (dateStr == null || dateStr.trim().isEmpty())
                     throw new IllegalArgumentException("không được bỏ trống ngày sinh.");
+                LocalDate today = LocalDate.now();
                 LocalDate birthday = LocalDate.parse(dateStr, formatter);
+                if(birthday.isAfter(today)){
+                   throw new IllegalArgumentException("sinh nhật phải < "+ today.format(formatter));
+                }
                 if (birthday.getYear() < Constant.MIN_START_YEAR) throw new IllegalArgumentException("Năm sinh phải từ 1900 trở đi");
                 return birthday;
             } catch (DateTimeParseException e) {
@@ -150,6 +153,10 @@ public class DataEntry {
                 if (year < Constant.MIN_START_YEAR || year > Constant.MAX_START_YEAR) {
                     throw new IllegalArgumentException("Năm nhập học phải là số 4 chữ số từ 1900!");
                 }
+                int today = LocalDate.now().getYear();
+                if (year > today) {
+                    throw new IllegalArgumentException("phải <= " + today);
+                }
                 return year;
             } catch (NumberFormatException e) {
                 System.out.println("Lỗi: Năm nhập học không hợp lệ! Vui lòng nhập lại.");
@@ -164,7 +171,7 @@ public class DataEntry {
             System.out.print("Nhập GPA (0.0 - 10.0, vd: 8.5): ");
             try {
                 String gpaInput = sc.nextLine().replace(",", ".");
-                if(gpaInput.trim().isEmpty()) return 0.0;
+                if(gpaInput.trim().isEmpty()) throw new IllegalArgumentException("không được bỏ trống GPA");
                 double gpa = Double.parseDouble(gpaInput);
                 if (gpa < Constant.MIN_GPA || gpa > Constant.MAX_GPA) {
                     throw new IllegalArgumentException("GPA phải từ 0.0 đến 10.0!");

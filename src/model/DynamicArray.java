@@ -40,15 +40,17 @@ public class DynamicArray {
             System.out.println("Không có sinh viên để lưu!");
             return;
         }
-        try{
-            PrintWriter writer = new PrintWriter("students_2.txt", "UTF-8");
+        
+        // Sử dụng try-with-resources để tự động đóng file
+        try (PrintWriter writer = new PrintWriter("students_2.txt", "UTF-8")) {
             System.out.println("Số lượng sinh viên: " + size());
             for (int i = 0; i < size(); i++) {
                 System.out.println(get(i));
                 writer.println(get(i));
             }
-            writer.close();
-        }catch (IOException e){
+            System.out.println("Lưu file thành công!");
+        } catch (IOException e) {
+            System.err.println("Lỗi khi lưu file: " + e.getMessage());
             e.printStackTrace();
         }
     }

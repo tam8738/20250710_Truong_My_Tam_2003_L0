@@ -1,2 +1,4 @@
-Student{id : 1, tên : Tâm, sinh nhật : 18/07/2003, địa chỉ : jhgfd, chiều cao : 155.0 cm, cân nặng : 46.0 kg
-MSV : 0123456789, trường : ac, năm nhập học : 2021, gpa : 7.0, học lực: kha}
+Student{id : 1, tên : Tâm, sinh nhật : 18/07/2003, địa chỉ : BA VÌ, chiều cao : 155.0 cm, cân nặng : 46.0 kg
+MSV : 0123456789, trường : bgfd, năm nhập học : 2021, gpa : 7.0, học lực: kha}
+Student{id : 2, tên : Ve, sinh nhật : 27/04/2003, địa chỉ : ba vi, chiều cao : 155.0 cm, cân nặng : 42.0 kg
+MSV : 1234567890, trường : df, năm nhập học : 2021, gpa : 6.0, học lực: trung binh}

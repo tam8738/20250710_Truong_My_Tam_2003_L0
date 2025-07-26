@@ -63,28 +63,22 @@ public class CRUD_Dynamic {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần sửa:");
         int id = sc.nextInt();
+        sc.nextLine();
         int index = searchById(id);
         if (index != -1) {
             Student s = dynamicArray.get(index);
-            System.out.print("Nhập tên: ");
+            System.out.println(s);
             s.setName(DataEntry.inputName(sc));
-            System.out.print("Nhập sinh nhật: ");
             s.setDateOfBirth(DataEntry.inputBirthday(sc));
-            System.out.print("Nhâp địa chỉ: ");
             s.setAddress(DataEntry.inputAddress(sc));
-            System.out.print("Nhập chiều cao:");
             s.setHeight(DataEntry.inputHeight(sc));
-            System.out.print("Nhập cân nặng: ");
             s.setWeight(DataEntry.inputWeight(sc));
-            System.out.print("Nhập MSV: ");
             s.setStudentCode(DataEntry.inputStudentCode(sc, s.getStudentCode()));
-            System.out.print("Nhập trường học: ");
             s.setSchool(DataEntry.inputSchool(sc));
-            System.out.print("Năm nhập học: ");
             s.setYear(DataEntry.inputYear(sc));
-            System.out.println("GPA: ");
             s.setGpa(DataEntry.inputGpa(sc));
-            System.out.println("Cập nhật thành công!");
+            System.out.println("Sửa thông tin sinh viên thành công!");
+            System.out.println(s);
         } else {
             System.out.println("Id không tồn tại");
         }
